@@ -21,6 +21,7 @@ while True:
         aguarde(2)
     #elif opcao == "2":
 
+
     elif opcao == "3":
         print("Informe a Nova Palavra, e suas respectivas 3 dicas")
         palavra = lerString("Palavra: ")
@@ -28,7 +29,7 @@ while True:
         dica2 = lerString("Dica nº 2: ")
         dica3 = lerString("Dica nº 3: ")
         arquivo = open("bd.forca","a")
-        arquivo.write(palavra +"-"+ dica1+ "-"+ dica2+"-" + dica3+"-"+ "\n") #tem que organizar melhor para aparecer uma lista de forma correta
+        arquivo.write("Palavra: "+ palavra +"\nDica1 :" + dica1+"\nDica2:"+dica2+ "\nDica3:"+ dica3+ "\n") #tem que organizar melhor para aparecer uma lista de forma correta
         arquivo.close
         print("Palavra Adicionada com Sucesso! ")
         aguarde(2)
