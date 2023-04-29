@@ -1,4 +1,4 @@
-from funcoes import limparTela, aguarde, mudarCor, lerString
+from funcoes import limparTela, aguarde, mudarCor, lerString, RandomWord
 import random
 
 limparTela()
@@ -20,27 +20,33 @@ while True:
         mudarCor(cor)
         input("press enter to continue...")
         aguarde(2)
+
     elif opcao == "2":
-        arquivo = open("bd.forca", "r")
-        dados = arquivo.readlines()
+        palavra = RandomWord()
+        
+        limparTela()
+        print("processando...")    
+        aguarde(2)
+        print("A palavra foi escolhida")
+        aguarde(2)
+        tamanho = len(palavra)
+        riscos = ("_"*int(tamanho-1))
+        print(riscos)
+        word = []
+        word2 = []
+        for i in riscos:
+            word.append(i)
+
         while True:
-            aleatorio = random.randint(0, len(dados))
-            try:
-                if aleatorio % 2 != 1:
-                    palavra = dados[aleatorio]
-                else: 
-                    palavra = dados[0]
-            except:
-                palavra = dados[0]
-            limparTela()
-            print("processando...")    
-            aguarde(2)
-            print("A palavra foi escolhida")
-            aguarde(2)
-            tamanho = len(palavra)
-            print("_"*int(tamanho-1))
-            print("chute uma letra: ")
-            letra = input()
+            letra = input("digite uma letra: ")
+            s = palavra.find(letra)
+            if s == -1: 
+                print("Não tem esta letra")
+            else:
+                word[s] = letra
+                print(word)
+                
+
 
 
     elif opcao == "3":
@@ -51,7 +57,7 @@ while True:
         dica3 = lerString("Dica nº 3: ")
         try:
             arquivo = open("bd.forca","a")
-            arquivo.write("Palavra: "+ palavra + "\n" + "Dica1: " + dica1+" Dica2: "+dica2+ " Dica3: "+ dica3+ "\n") #tem que organizar melhor para aparecer uma lista de forma correta
+            arquivo.write(palavra + "\n" + dica1+" "+dica2+ " "+ dica3+ "\n") #tem que organizar melhor para aparecer uma lista de forma correta
             arquivo.close
             print("Palavra Adicionada com Sucesso! ")
             aguarde(2)

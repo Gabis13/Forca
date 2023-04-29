@@ -1,5 +1,6 @@
-import os
-import time
+import os, time, random
+
+
 
 def limparTela():
     os.system("cls")
@@ -17,3 +18,18 @@ def lerString(mensagem):
             return variavel
         else:
             print("Valor incorreto!")
+
+def RandomWord ():
+    arquivo = open("bd.forca", "r")
+    dados = arquivo.readlines()
+    while True:
+        aleatorio = random.randint(0, len(dados))
+        try:
+            if aleatorio % 2 != 1:
+                    palavra = dados[aleatorio]
+            else: 
+                palavra = dados[0]
+        except:
+            palavra = dados[0]
+        break
+    return palavra
