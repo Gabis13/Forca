@@ -1,4 +1,4 @@
-from funcoes import limparTela, aguarde, mudarCor, lerString
+from funcoes import limparTela, aguarde, mudarCor, lerString, RandomWord
 import random
 
 limparTela()
@@ -22,11 +22,29 @@ while True:
         mudarCor(cor)
         input("press enter to continue...")
         aguarde(2)
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 75aab1cd779f1699528abcc879c9382ba15035cc
     elif opcao == "2":
-        arquivo = open("bd.forca", "r")
-        dados = arquivo.readlines()
+        palavra = RandomWord()
+        
+        limparTela()
+        print("processando...")    
+        aguarde(2)
+        print("A palavra foi escolhida")
+        aguarde(2)
+        tamanho = len(palavra)
+        riscos = ("_"*int(tamanho-1))
+        print(riscos)
+        word = []
+        word2 = []
+        for i in riscos:
+            word.append(i)
+
         while True:
+<<<<<<< HEAD
             aleatorio = random.randint(0, len(dados))
             try:
                 if aleatorio % 2 != 1:
@@ -43,12 +61,25 @@ while True:
             tamanho = len(palavra)
             print("_"*int(tamanho-1))
             letra = input("Digite uma letra: ")
+=======
+            letra = input("digite uma letra: ")
+            s = palavra.find(letra)
+            if s == -1: 
+                print("Não tem esta letra")
+            else:
+                word[s] = letra
+                print(word)
+                
+
+
+>>>>>>> 75aab1cd779f1699528abcc879c9382ba15035cc
 
     elif opcao == "3":
         print("Informe a Nova Palavra, e suas respectivas 3 dicas")
         palavra = lerString("Palavra: ")
         dica1 = lerString("Dica nº 1: ")
         dica2 = lerString("Dica nº 2: ")
+<<<<<<< HEAD
         dica3 = lerString("Dica nº 3: ")    
         while True:
             try:
@@ -61,6 +92,18 @@ while True:
                 arquivo = open("bd.forca", "w")
                 arquivo.close
     
+=======
+        dica3 = lerString("Dica nº 3: ")
+        try:
+            arquivo = open("bd.forca","a")
+            arquivo.write(palavra + "\n" + dica1+" "+dica2+ " "+ dica3+ "\n") #tem que organizar melhor para aparecer uma lista de forma correta
+            arquivo.close
+            print("Palavra Adicionada com Sucesso! ")
+            aguarde(2)
+        except:
+            arquivo = open("bd.forca", "w")
+            arquivo.close
+>>>>>>> 75aab1cd779f1699528abcc879c9382ba15035cc
     elif opcao == "4":
         arquivo = open("bd.forca","r")
         dados = arquivo.read()
