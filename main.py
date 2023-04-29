@@ -1,4 +1,5 @@
 from funcoes import limparTela, aguarde, mudarCor, lerString
+import random
 
 limparTela()
 print("Seja Bem-vindo ao Jogo da Forca! ")
@@ -19,7 +20,27 @@ while True:
         mudarCor(cor)
         input("press enter to continue...")
         aguarde(2)
-    #elif opcao == "2":
+    elif opcao == "2":
+        arquivo = open("bd.forca", "r")
+        dados = arquivo.readlines()
+        while True:
+            aleatorio = random.randint(0, len(dados))
+            try:
+                if aleatorio % 2 != 1:
+                    palavra = dados[aleatorio]
+                else: 
+                    palavra = dados[0]
+            except:
+                palavra = dados[0]
+            limparTela()
+            print("processando...")    
+            aguarde(2)
+            print("A palavra foi escolhida")
+            aguarde(2)
+            tamanho = len(palavra)
+            print("_"*int(tamanho-1))
+            print("chute uma letra: ")
+            letra = input()
 
 
     elif opcao == "3":
@@ -28,11 +49,15 @@ while True:
         dica1 = lerString("Dica nº 1: ")
         dica2 = lerString("Dica nº 2: ")
         dica3 = lerString("Dica nº 3: ")
-        arquivo = open("bd.forca","a")
-        arquivo.write("Palavra: "+ palavra +"\nDica1 :" + dica1+"\nDica2:"+dica2+ "\nDica3:"+ dica3+ "\n") #tem que organizar melhor para aparecer uma lista de forma correta
-        arquivo.close
-        print("Palavra Adicionada com Sucesso! ")
-        aguarde(2)
+        try:
+            arquivo = open("bd.forca","a")
+            arquivo.write("Palavra: "+ palavra + "\n" + "Dica1: " + dica1+" Dica2: "+dica2+ " Dica3: "+ dica3+ "\n") #tem que organizar melhor para aparecer uma lista de forma correta
+            arquivo.close
+            print("Palavra Adicionada com Sucesso! ")
+            aguarde(2)
+        except:
+            arquivo = open("bd.forca", "w")
+            arquivo.close
     elif opcao == "4":
         arquivo = open("bd.forca","r")
         dados = arquivo.read()
