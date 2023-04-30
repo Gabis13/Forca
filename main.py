@@ -21,7 +21,7 @@ while lock:
         mudarCor(cor)
         input("press enter to continue...")
         aguarde(2)
-
+    
     elif opcao == "2":
         limparTela()
         print("processando...")
@@ -86,21 +86,22 @@ while lock:
                         print(*word, sep=" ")
                         print("vidas: ", count)
                         stop = False
-
     elif opcao == "3":
         print("Informe a Nova Palavra, e suas respectivas 3 dicas")
         palavra = lerString("Palavra: ")
         dica1 = lerString("Dica nº 1: ")
         dica2 = lerString("Dica nº 2: ")
-        dica3 = lerString("Dica nº 3: ")
-
-        # tem que organizar melhor para aparecer uma lista de forma correta
-        arquivo = open("bd.forca", "a")
-        arquivo.write("{} \n {} - {} - {}\n".format(Upper(palavra),
-                      Upper(dica1), Upper(dica2), Upper(dica3)))
-        arquivo.close
-        print("Palavra Adicionada com Sucesso! ")
-        aguarde(2)
+        dica3 = lerString("Dica nº 3: ")    
+        while True:
+            try:
+                arquivo = open("bd.forca","a")
+                arquivo.writelines(["\nPalavra: "+ palavra, "\nDica1: " + dica1, "\nDica2: "+dica2, "\nDica3: "+ dica3,],"\n")   #tem que organizar melhor para aparecer uma lista de forma correta         
+                arquivo.close
+                print("Palavra Adicionada com Sucesso! ")
+                aguarde(2)
+            except:
+                arquivo = open("bd.forca", "w")
+                arquivo.close
 
     elif opcao == "4":
         arquivo = open("bd.forca", "r")
@@ -108,7 +109,6 @@ while lock:
         print(dados)
         arquivo.close
         aguarde(5)
-
     else:
         print("Opção Inválida!")
         input("press enter tot continue...")
