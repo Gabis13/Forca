@@ -14,22 +14,17 @@ def mudarCor(codeCor):
 def lerString(mensagem):
     while True:
         variavel = input(mensagem)
-        if len(variavel)>1:
+        if len(variavel)>=1:
             return variavel
         else:
             print("Valor incorreto!")
 
-def RandomWord ():
-    arquivo = open("bd.forca", "r")
-    dados = arquivo.readlines()
-    while True:
-        aleatorio = random.randint(0, len(dados))
-        try:
-            if aleatorio % 2 != 1:
-                    palavra = dados[aleatorio]
-            else: 
-                palavra = dados[0]
-        except:
-            palavra = dados[0]
-        break
-    return palavra
+
+def Upper(string):
+   retorno = ''
+   for caractere in string:
+      if caractere.islower():
+         retorno += caractere.upper()
+      else:
+         retorno = caractere
+   return retorno
