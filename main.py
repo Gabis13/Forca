@@ -11,6 +11,7 @@ while True:
     print("(2) Iniciar Jogo")
     print("(3) Para adicionar palavras e dicas")
     print("(4) Mostrar palavras e dicas")
+    print("(5) Resetar palavras e dicas")
     opcao = input()
 
     if opcao == "0":
@@ -111,6 +112,12 @@ while True:
         print(dados)
         arquivo.close
         aguarde(5)
+
+    elif opcao == "5":
+        arquivo = open("bd.forca", "w")
+        arquivo.close
+        print("Palavras e dicas restadas com sucesso")
+        aguarde(2)
     else:
         print("Opção Inválida!")
         input("press enter tot continue...")
