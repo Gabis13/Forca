@@ -14,10 +14,10 @@ def mudarCor(codeCor):
 def lerString(mensagem):
     while True:
         variavel = input(mensagem)
-        if len(variavel)>=1:
+        if variavel.find(" ") >= 1:
+            print("valor inserido incorretamente")
+        elif len(variavel)>=1:
             return variavel
-        else:
-            print("Valor incorreto!")
 
 
 def Upper(string):
@@ -28,3 +28,88 @@ def Upper(string):
       else:
          retorno = caractere
    return retorno
+
+
+def AdicionarBD (desafiante, desafiado, palavra, erros, dicas, resultado):
+    try:
+        arquivo = open("bd.relatorio", "a")
+        dados = arquivo.write("\nDesafiante: {}\nDesafiado: {}\npalavra: {}\nErros: {}\nQuantidade de dicas: {}\nresultado: {}".format(desafiante, desafiado, palavra, erros, dicas, resultado))
+        arquivo.close
+    except:
+        arquivo = open("bd.relatorio", "w")
+        arquivo.close
+
+def desenho(erros):
+    if erros == 0:
+        print()
+        print("|----- ")
+        print("|    | ")
+        print("|      ")
+        print("|      ")
+        print("|      ")
+        print("|      ")
+        print()
+
+    elif erros == 1:
+        print()
+        print("|----- ")
+        print("|    | ")
+        print("|    O ")
+        print("|      ")
+        print("|      ")
+        print("|      ")
+        print()
+
+        
+    elif erros == 2:
+        print()
+        print("|----- ")
+        print("|    | ")
+        print("|    O ")
+        print("|    | ")
+        print("|    |  ")
+        print("|      ")
+        print()
+
+    elif erros == 3:
+        print()
+        print("|----- ")
+        print("|    | ")
+        print("|    O ")
+        print("|    |\ ")
+        print("|    |  ")
+        print("|      ")
+        print()
+
+        
+    elif erros == 4:
+        print()
+        print("|----- ")
+        print("|    | ")
+        print("|    O ")
+        print("|   /|\ ")
+        print("|    | ")
+        print("|      ")
+        print()
+
+
+        
+    elif erros == 5:
+        print()
+        print("|----- ")
+        print("|    | ")
+        print("|    O ")
+        print("|   /|\ ")
+        print("|    | ")
+        print("|     \ ")
+        print()
+
+    elif erros == 6:
+        print()
+        print("------ ")
+        print("|    | ")
+        print("|    O ")
+        print("|   /|\ ")
+        print("|    | ")
+        print("|   / \ ")
+        print()
